@@ -1,6 +1,6 @@
 TARGET = bin/guessing-game
 SRC = $(wildcard src/*.c)
-OBJ = $(patsubt src/%.c, obj/%.o, $(SRC))
+OBJ = $(patsubst src/%.c, obj/%.o, $(SRC)) 
 
 default: $(TARGET)
 
@@ -12,4 +12,5 @@ $(TARGET): $(OBJ)
 	gcc -o $@ $? 
 
 obj/%.o : src/%.c 
-	gcc -c $^ -o $@ -Iinclude 
+	gcc -c $< -o $@ -Iinclude 
+
